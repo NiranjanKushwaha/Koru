@@ -1,6 +1,6 @@
 {
-  "name": "new333",
-  "version": "0.0.0",
+  "name": "koru",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -35,5 +35,25 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "typescript": "~4.5.2"
-  }
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.",
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NiranjanKushwaha/Koru.git"
+  },
+  "keywords": [
+    "Koru",
+    "UI",
+    "Koru",
+    "Sortable",
+    "table",
+    "Modal"
+  ],
+  "author": "Niranjan Kushwaha",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NiranjanKushwaha/Koru/issues"
+  },
+  "homepage": "https://github.com/NiranjanKushwaha/Koru#readme"
 }
