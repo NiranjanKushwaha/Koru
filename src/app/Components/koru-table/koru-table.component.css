@@ -1,0 +1,3 @@
+.table th > span:hover {
+  cursor: pointer;
+}

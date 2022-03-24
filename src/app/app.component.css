@@ -1,0 +1,17 @@
+.container-fluid,
+.row,
+.col-12 {
+  margin: 0;
+  padding: 0;
+}
+.view_data_btn {
+  text-align: center;
+}
+
+.view_data_btn button {
+  color: black;
+}
+
+.view_data_btn button:hover {
+  color: #fff;
+}

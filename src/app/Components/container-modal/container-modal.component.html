@@ -1,0 +1,18 @@
+<ng-template #modal>
+  <div class="modal-container">
+    <div class="modal-header">
+      <h4 class="modal-title">Koru Data List</h4>
+      <button
+        type="button"
+        class="btn btn-outline-info close"
+        aria-label="Close"
+        (click)="dismiss()"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+      <koru-table></koru-table>
+    </div>
+  </div>
+</ng-template>
