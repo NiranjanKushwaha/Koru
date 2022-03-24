@@ -168,4 +168,11 @@ export class KoruTableComponent implements OnInit {
   handleFilteredData(data: any) {
     this.allData = data;
   }
+
+  deleteRow(id: any) {
+    this.allData = this.allData.filter((item: any) => item.id !== id);
+    this.allDataDeepCopy = this.allDataDeepCopy.filter(
+      (item: any) => item.id !== id
+    );
+  }
 }
