@@ -26,6 +26,14 @@ export class KoruTableComponent implements OnInit {
 
   allData: any;
   allDataDeepCopy: Array<any> = [];
+  shouldAddNewField: boolean = false;
+  newRowData = {
+    id: null,
+    name: '',
+    mob: '',
+    designation: '',
+    isLast: true,
+  };
   ngOnInit(): void {
     this.http.get('../../../assets/data.json').subscribe((res) => {
       this.allData = res;
@@ -170,9 +178,51 @@ export class KoruTableComponent implements OnInit {
   }
 
   deleteRow(id: any) {
-    this.allData = this.allData.filter((item: any) => item.id !== id);
-    this.allDataDeepCopy = this.allDataDeepCopy.filter(
-      (item: any) => item.id !== id
-    );
+    if (this.allData && this.allData.length > 1) {
+      this.allData = this.allData.filter((item: any) => item.id !== id);
+      this.allDataDeepCopy = this.allDataDeepCopy.filter(
+        (item: any) => item.id !== id
+      );
+      this.allData.at(-1).isLast = true;
+      this.allDataDeepCopy = this.allData.slice();
+    }
+  }
+  addNewRow() {
+    const found = this.allData.some((el: any) => el.id === this.newRowData.id);
+    if (!found) {
+      this.allData.push(this.newRowData);
+      this.allData.map((item: any) => {
+        if (item.id === this.newRowData.id) {
+          item.isLast = true;
+        } else {
+          item.isLast = false;
+        }
+      });
+
+      this.newRowData = {
+        id: null,
+        name: '',
+        mob: '',
+        designation: '',
+        isLast: true,
+      };
+    }
+  }
+
+  isAllFieldsNotMapped(): boolean {
+    let isAnyFieldNotMapped: boolean = true;
+    this.newRowData.id = this.allData.length + 1;
+    Object.keys(this.newRowData).forEach((key: any) => {
+      if (
+        this.newRowData['name'] !== '' &&
+        this.newRowData['designation'] !== '' &&
+        this.newRowData['mob'] !== null &&
+        Number(this.newRowData['mob'].split('')[0]) > 5 &&
+        this.newRowData['mob'].split('').length === 10
+      ) {
+        isAnyFieldNotMapped = false;
+      }
+    });
+    return isAnyFieldNotMapped;
   }
 }

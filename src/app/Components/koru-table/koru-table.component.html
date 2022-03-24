@@ -68,13 +68,53 @@
           <td scope="row">{{ data.mob }}</td>
           <td scope="row">{{ data.designation }}</td>
           <td scope="row">
-            <button class="btn btn-outline-danger" (click)="deleteRow(data.id)">
+            <button
+              class="btn btn-outline-danger"
+              (click)="deleteRow(data.id)"
+              [disabled]="allData.length === 1"
+            >
               <i class="fa-solid fa-trash-can"></i>
             </button>
-            <button
+            <!-- <button
               class="btn btn-outline-primary"
               *ngIf="data.isLast"
               style="margin-left: 5px"
+              (click)="addNewRow()"
+            >
+              <i class="fa-solid fa-plus"></i>
+            </button> -->
+          </td>
+        </tr>
+        <!-- *ngIf="shouldAddNewField" -->
+        <tr>
+          <td>{{ allData.length + 1 }}</td>
+          <td>
+            <input
+              type="text"
+              [(ngModel)]="newRowData.name"
+              placeholder="Enter Name"
+            />
+          </td>
+          <td>
+            <input
+              type="text"
+              [(ngModel)]="newRowData.mob"
+              placeholder="Enter Valid 10 digit Mob Number"
+              numbersOnly
+            />
+          </td>
+          <td>
+            <input
+              type="text"
+              [(ngModel)]="newRowData.designation"
+              placeholder="Enter Designation"
+            />
+          </td>
+          <td>
+            <button
+              class="btn btn-outline-primary"
+              (click)="addNewRow()"
+              [disabled]="isAllFieldsNotMapped()"
             >
               <i class="fa-solid fa-plus"></i>
             </button>

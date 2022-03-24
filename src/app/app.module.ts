@@ -8,12 +8,14 @@ import { KoruTableComponent } from './Components/koru-table/koru-table.component
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchDataComponent } from './Components/search-data/search-data.component';
+import { NumbersOnlyDirective } from './Directives/numbers-only.directive';
 @NgModule({
   declarations: [
     AppComponent,
     ContainerModalComponent,
     KoruTableComponent,
     SearchDataComponent,
+    NumbersOnlyDirective,
   ],
   imports: [
     BrowserModule,
