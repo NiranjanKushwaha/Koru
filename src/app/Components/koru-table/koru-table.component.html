@@ -1,11 +1,8 @@
 <div>
   <div class="text-center">
-    <search-data></search-data>
+    <search-data (filteredOutput)="handleFilteredData($event)"></search-data>
   </div>
-  <table
-    class="table table-striped"
-    *ngIf="allData && allData.length; else noDataFound"
-  >
+  <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col" (click)="sort('idSort')">
@@ -63,7 +60,7 @@
         <th scope="col">Actions</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="allData && allData.length; else noDataFound">
       <tr *ngFor="let data of allData">
         <td scope="row">{{ data.id }}</td>
         <td scope="row">{{ data.name }}</td>
@@ -83,8 +80,8 @@
         </td>
       </tr>
     </tbody>
+    <ng-template #noDataFound>
+      <h6 class="text-center text-danger">No data found for view</h6>
+    </ng-template>
   </table>
-  <ng-template #noDataFound>
-    <h6 class="text-center text-danger">No data found for view</h6>
-  </ng-template>
 </div>

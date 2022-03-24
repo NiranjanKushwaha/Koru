@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DataShareService } from 'src/app/services/data-share.service';
 
 @Component({
@@ -18,14 +18,31 @@ export class SearchDataComponent implements OnInit {
   searchText: any;
   searchData: any;
   filterBy: string = 'Select Filter By';
+  @Output() filteredOutput = new EventEmitter<any>();
 
   ngOnInit(): void {}
   Search(data: any) {
-    console.log('filter by: ', this.filterBy);
-    if (this.filterBy) {
-      // let filteredData=this.searchData.filter(item=>{
-      //    if(item.name.includes(data) || item.)
-      // })
+    if (data && data.length > 2) {
+      if (this.filterBy) {
+        let filteredData = [1, 2, 3];
+        filteredData = this.searchData.filter((item: any) => {
+          if (typeof item[this.filterBy] === 'string') {
+            if (
+              item[this.filterBy].toLowerCase().includes(data.toLowerCase())
+            ) {
+              return item;
+            }
+          } else {
+            if (item[this.filterBy].toString().includes(data.toString())) {
+              return item;
+            }
+          }
+        });
+
+        this.filteredOutput.emit(filteredData);
+      }
+    } else {
+      this._dataShareService.filteredData.next(this.searchData);
     }
   }
 }

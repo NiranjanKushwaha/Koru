@@ -7,4 +7,5 @@ import { Subject } from 'rxjs';
 export class DataShareService {
   constructor() {}
   searchData = new Subject<any>();
+  filteredData = new Subject<any>();
 }

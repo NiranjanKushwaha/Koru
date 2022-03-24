@@ -16,7 +16,13 @@ export class KoruTableComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private _dataShareService: DataShareService
-  ) {}
+  ) {
+    this._dataShareService.filteredData.subscribe((res) => {
+      if (res && res.length) {
+        this.allData = res;
+      }
+    });
+  }
   tableSortOrder: any = {
     idSort: { type: '', value: 0 },
     nameSort: { type: '', value: 0 },
@@ -86,5 +92,9 @@ export class KoruTableComponent implements OnInit {
         this.tableSortOrder[item].type = '';
       }
     });
+  }
+
+  handleFilteredData(data: any) {
+    this.allData = data;
   }
 }
