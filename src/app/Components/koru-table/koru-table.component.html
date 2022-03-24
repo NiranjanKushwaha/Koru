@@ -60,28 +60,32 @@
         <th scope="col">Actions</th>
       </tr>
     </thead>
-    <tbody *ngIf="allData && allData.length; else noDataFound">
-      <tr *ngFor="let data of allData">
-        <td scope="row">{{ data.id }}</td>
-        <td scope="row">{{ data.name }}</td>
-        <td scope="row">{{ data.mob }}</td>
-        <td scope="row">{{ data.designation }}</td>
-        <td scope="row">
-          <button class="btn btn-outline-danger">
-            <i class="fa-solid fa-trash-can"></i>
-          </button>
-          <button
-            class="btn btn-outline-primary"
-            *ngIf="data.isLast"
-            style="margin-left: 5px"
-          >
-            <i class="fa-solid fa-plus"></i>
-          </button>
+    <tbody>
+      <ng-container *ngIf="allData && allData.length; else noDataFound">
+        <tr *ngFor="let data of allData">
+          <td scope="row">{{ data.id }}</td>
+          <td scope="row">{{ data.name }}</td>
+          <td scope="row">{{ data.mob }}</td>
+          <td scope="row">{{ data.designation }}</td>
+          <td scope="row">
+            <button class="btn btn-outline-danger">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+            <button
+              class="btn btn-outline-primary"
+              *ngIf="data.isLast"
+              style="margin-left: 5px"
+            >
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </td>
+        </tr>
+      </ng-container>
+      <ng-template #noDataFound>
+        <td [attr.colspan]="5">
+          <h6 class="text-center text-danger">No data found for view</h6>
         </td>
-      </tr>
+      </ng-template>
     </tbody>
-    <ng-template #noDataFound>
-      <h6 class="text-center text-danger">No data found for view</h6>
-    </ng-template>
   </table>
 </div>

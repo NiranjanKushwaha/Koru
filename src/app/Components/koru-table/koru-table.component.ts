@@ -6,12 +6,6 @@ import { DataShareService } from 'src/app/services/data-share.service';
   templateUrl: './koru-table.component.html',
   styleUrls: ['./koru-table.component.css'],
 })
-// export interface DataType {
-//   id: number;
-//   name: string;
-//   mob: number;
-//   designation:string
-// }
 export class KoruTableComponent implements OnInit {
   constructor(
     private http: HttpClient,
@@ -31,10 +25,13 @@ export class KoruTableComponent implements OnInit {
   };
 
   allData: any;
+  allDataDeepCopy: Array<any> = [];
   ngOnInit(): void {
     this.http.get('../../../assets/data.json').subscribe((res) => {
       this.allData = res;
-      console.log(res);
+      if (Array.isArray(res)) {
+        this.allDataDeepCopy = res.slice();
+      }
       this._dataShareService.searchData.next(res);
     });
   }
@@ -46,14 +43,22 @@ export class KoruTableComponent implements OnInit {
         this.tableSortOrder.idSort.value,
         Object.keys(this.tableSortOrder)[0]
       );
-
-      console.log(this.tableSortOrder.idSort);
+      this.allData = this.sortByOrder(
+        this.tableSortOrder.idSort.type,
+        'id',
+        'number'
+      );
     }
     if (type === 'nameSort') {
       this.tableSortOrder.nameSort.value += 1;
       this.tableSortOrder.nameSort = this.getSortingOrder(
         this.tableSortOrder.nameSort.value,
         Object.keys(this.tableSortOrder)[1]
+      );
+      this.allData = this.sortByOrder(
+        this.tableSortOrder.nameSort.type,
+        'name',
+        'string'
       );
     }
     if (type === 'mobSort') {
@@ -62,6 +67,12 @@ export class KoruTableComponent implements OnInit {
         this.tableSortOrder.mobSort.value,
         Object.keys(this.tableSortOrder)[2]
       );
+
+      this.allData = this.sortByOrder(
+        this.tableSortOrder.mobSort.type,
+        'mob',
+        'number'
+      );
     }
     if (type === 'designationSort') {
       this.tableSortOrder.designationSort.value += 1;
@@ -69,7 +80,22 @@ export class KoruTableComponent implements OnInit {
         this.tableSortOrder.designationSort.value,
         Object.keys(this.tableSortOrder)[3]
       );
+
+      this.allData = this.sortByOrder(
+        this.tableSortOrder.designationSort.type,
+        'designation',
+        'string'
+      );
     }
+
+    let lastItem = this.allData.at(-1);
+    this.allData.map((el: any, index: number) => {
+      if (el.id === lastItem.id) {
+        el.isLast = true;
+      } else {
+        el.isLast = false;
+      }
+    });
   }
 
   getSortingOrder(value: number, keyName: string): any {
@@ -92,6 +118,51 @@ export class KoruTableComponent implements OnInit {
         this.tableSortOrder[item].type = '';
       }
     });
+  }
+
+  sortByOrder(type: string, keyName: string, dataType: string) {
+    if (dataType === 'string') {
+      if (type === 'ascending') {
+        return this.allData.sort((a: any, b: any) => {
+          const nameA = a[keyName].toUpperCase();
+          const nameB = b[keyName].toUpperCase();
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+          return 0;
+        });
+      } else if (type === 'descending') {
+        return this.allData.sort((a: any, b: any) => {
+          const nameA = a[keyName].toUpperCase();
+          const nameB = b[keyName].toUpperCase();
+          if (nameA > nameB) {
+            return -1;
+          }
+          if (nameA < nameB) {
+            return 1;
+          }
+          return 0;
+        });
+      } else {
+        return this.allDataDeepCopy;
+      }
+    }
+    if (dataType === 'number') {
+      if (type === 'ascending') {
+        return this.allData.sort((a: any, b: any) => {
+          return a[keyName] - b[keyName];
+        });
+      } else if (type === 'descending') {
+        return this.allData.sort((a: any, b: any) => {
+          return b[keyName] - a[keyName];
+        });
+      } else {
+        return this.allDataDeepCopy;
+      }
+    }
   }
 
   handleFilteredData(data: any) {
