@@ -1,64 +1,90 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col" (click)="sort('idSort')">
-        Id
-        <span class="upArrow" *ngIf="tableSortOrder.idSort.type === 'ascending'"
-          ><i class="fa-solid fa-arrow-up"></i
-        ></span>
-        <span
-          class="downArrow"
-          *ngIf="tableSortOrder.idSort.type === 'descending'"
-          ><i class="fa-solid fa-arrow-down"></i>
-        </span>
-      </th>
-      <th scope="col" (click)="sort('nameSort')">
-        Name
-        <span
-          class="upArrow"
-          *ngIf="tableSortOrder.nameSort.type === 'ascending'"
-          ><i class="fa-solid fa-arrow-up"></i
-        ></span>
-        <span
-          class="downArrow"
-          *ngIf="tableSortOrder.nameSort.type === 'descending'"
-          ><i class="fa-solid fa-arrow-down"></i>
-        </span>
-      </th>
-      <th scope="col" (click)="sort('mobSort')">
-        Mobile
-        <span
-          class="upArrow"
-          *ngIf="tableSortOrder.mobSort.type === 'ascending'"
-          ><i class="fa-solid fa-arrow-up"></i
-        ></span>
-        <span
-          class="downArrow"
-          *ngIf="tableSortOrder.mobSort.type === 'descending'"
-          ><i class="fa-solid fa-arrow-down"></i>
-        </span>
-      </th>
-      <th scope="col" (click)="sort('designationSort')">
-        Designation
-        <span
-          class="upArrow"
-          *ngIf="tableSortOrder.designationSort.type === 'ascending'"
-          ><i class="fa-solid fa-arrow-up"></i
-        ></span>
-        <span
-          class="downArrow"
-          *ngIf="tableSortOrder.designationSort.type === 'descending'"
-          ><i class="fa-solid fa-arrow-down"></i>
-        </span>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let data of allData">
-      <td scope="row">{{ data.id }}</td>
-      <td scope="row">{{ data.name }}</td>
-      <td scope="row">{{ data.mob }}</td>
-      <td scope="row">{{ data.designation }}</td>
-    </tr>
-  </tbody>
-</table>
+<div>
+  <div class="text-center">
+    <search-data></search-data>
+  </div>
+  <table
+    class="table table-striped"
+    *ngIf="allData && allData.length; else noDataFound"
+  >
+    <thead>
+      <tr>
+        <th scope="col" (click)="sort('idSort')">
+          Id
+          <span
+            class="upArrow"
+            *ngIf="tableSortOrder.idSort.type === 'ascending'"
+            ><i class="fa-solid fa-arrow-up"></i
+          ></span>
+          <span
+            class="downArrow"
+            *ngIf="tableSortOrder.idSort.type === 'descending'"
+            ><i class="fa-solid fa-arrow-down"></i>
+          </span>
+        </th>
+        <th scope="col" (click)="sort('nameSort')">
+          Name
+          <span
+            class="upArrow"
+            *ngIf="tableSortOrder.nameSort.type === 'ascending'"
+            ><i class="fa-solid fa-arrow-up"></i
+          ></span>
+          <span
+            class="downArrow"
+            *ngIf="tableSortOrder.nameSort.type === 'descending'"
+            ><i class="fa-solid fa-arrow-down"></i>
+          </span>
+        </th>
+        <th scope="col" (click)="sort('mobSort')">
+          Mobile
+          <span
+            class="upArrow"
+            *ngIf="tableSortOrder.mobSort.type === 'ascending'"
+            ><i class="fa-solid fa-arrow-up"></i
+          ></span>
+          <span
+            class="downArrow"
+            *ngIf="tableSortOrder.mobSort.type === 'descending'"
+            ><i class="fa-solid fa-arrow-down"></i>
+          </span>
+        </th>
+        <th scope="col" (click)="sort('designationSort')">
+          Designation
+          <span
+            class="upArrow"
+            *ngIf="tableSortOrder.designationSort.type === 'ascending'"
+            ><i class="fa-solid fa-arrow-up"></i
+          ></span>
+          <span
+            class="downArrow"
+            *ngIf="tableSortOrder.designationSort.type === 'descending'"
+            ><i class="fa-solid fa-arrow-down"></i>
+          </span>
+        </th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of allData">
+        <td scope="row">{{ data.id }}</td>
+        <td scope="row">{{ data.name }}</td>
+        <td scope="row">{{ data.mob }}</td>
+        <td scope="row">{{ data.designation }}</td>
+        <td scope="row">
+          <button class="btn btn-outline-danger">
+            <i class="fa-solid fa-trash-can"></i>
+          </button>
+          <button
+            class="btn btn-outline-primary"
+            *ngIf="data.isLast"
+            style="margin-left: 5px"
+          >
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #noDataFound>
+    <h6 class="text-center text-danger">No data found for view</h6>
+  </ng-template>
+</div>

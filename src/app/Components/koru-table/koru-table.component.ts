@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { DataShareService } from 'src/app/services/data-share.service';
 @Component({
   selector: 'koru-table',
   templateUrl: './koru-table.component.html',
@@ -12,7 +13,10 @@ import { HttpClient } from '@angular/common/http';
 //   designation:string
 // }
 export class KoruTableComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private _dataShareService: DataShareService
+  ) {}
   tableSortOrder: any = {
     idSort: { type: '', value: 0 },
     nameSort: { type: '', value: 0 },
@@ -25,6 +29,7 @@ export class KoruTableComponent implements OnInit {
     this.http.get('../../../assets/data.json').subscribe((res) => {
       this.allData = res;
       console.log(res);
+      this._dataShareService.searchData.next(res);
     });
   }
   sort(type: string) {

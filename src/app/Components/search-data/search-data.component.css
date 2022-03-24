@@ -1,0 +1,10 @@
+select {
+  height: 2rem;
+  width: 10rem;
+
+  margin-right: 3px;
+}
+input[type="text"] {
+  height: 2rem;
+  width: 12rem;
+}

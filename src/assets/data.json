@@ -4,90 +4,90 @@
     "name": "Heena",
     "mob": 9917075200,
     "designation": "Backend developer",
-    "isSorted": ""
+    "isLast": false
   },
   {
     "id": 2,
     "name": "Bikki",
     "mob": 8923640679,
     "designation": "FrontEnd developer",
-    "isSorted": ""
+    "isLast": false
   },
   {
     "id": 3,
     "name": "Amit",
     "mob": 8767357114,
     "designation": "Full stack developer",
-    "isSorted": ""
+    "isLast": false
   },
   {
     "id": 4,
     "name": "Neeraj",
     "mob": 9908920908,
     "designation": "software developer",
-    "isSorted": ""
+    "isLast": false
   },
   {
     "id": 5,
     "name": "Rajesh",
     "mob": 7890997614,
     "designation": "FrontEnd developer",
-    "isSorted": ""
+    "isLast": false
   },
   {
     "id": 6,
     "name": "Kumar",
     "mob": 8978331212,
     "designation": "Database Engineer",
-    "isSorted": ""
+    "isLast": false
   },
   {
     "id": 7,
     "name": "Preetam",
     "mob": 8589781567,
     "designation": "UI developer",
-    "isSorted": ""
+    "isLast": false
   },
   {
     "id": 8,
     "name": "Nirankar",
     "mob": 9899196437,
     "designation": "UX designer",
-    "isSorted": ""
+    "isLast": false
   },
   {
     "id": 9,
     "name": "Ritwik",
     "mob": 8979629091,
     "designation": "HR",
-    "isSorted": ""
+    "isLast": false
   },
   {
     "id": 10,
     "name": "Ganesh",
     "mob": 7090287263,
     "designation": "Vice president",
-    "isSorted": ""
+    "isLast": false
   },
   {
     "id": 11,
     "name": "Manoj",
     "mob": 9878910931,
     "designation": "CTO",
-    "isSorted": ""
+    "isLast": false
   },
   {
     "id": 12,
     "name": "Pandu",
     "mob": 7894569026,
     "designation": "COO",
-    "isSorted": ""
+    "isLast": false
   },
   {
     "id": 13,
     "name": "Dindayal",
     "mob": 9596960789,
     "designation": "FrontEnd developer",
-    "isSorted": ""
+    "isLast": true
   }
 ]

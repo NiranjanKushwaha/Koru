@@ -1,0 +1,14 @@
+<div>
+  <select [(ngModel)]="filterBy">
+    <option [ngValue]="'Select Filter By'" disabled>Select Filter By</option>
+    <option [ngValue]="'name'">Filter By Name</option>
+    <option [ngValue]="'mob'">Filter By Mobile</option>
+    <option [ngValue]="'designation'">Filter By Designation</option>
+  </select>
+  <input
+    type="text"
+    [ngModel]="searchText"
+    (ngModelChange)="Search($event)"
+    [disabled]="filterBy === 'Select Filter By'"
+  />
+</div>
