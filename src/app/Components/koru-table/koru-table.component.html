@@ -100,7 +100,8 @@
           </td>
           <td>
             <button
-              class="btn btn-outline-primary"
+              [ngClass]="{ 'btn-outline-success': !isAllFieldsNotMapped() }"
+              class="btn"
               (click)="addNewRow()"
               [disabled]="isAllFieldsNotMapped()"
             >
