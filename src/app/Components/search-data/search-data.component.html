@@ -1,5 +1,5 @@
 <div>
-  <select [(ngModel)]="filterBy">
+  <select [ngModel]="filterBy" (ngModelChange)="handleSelectOption($event)">
     <option [ngValue]="'Select Filter By'" disabled>Select Filter By</option>
     <option [ngValue]="'name'">Filter By Name</option>
     <option [ngValue]="'mob'">Filter By Mobile</option>
@@ -10,6 +10,6 @@
     [ngModel]="searchText"
     (ngModelChange)="Search($event)"
     [disabled]="filterBy === 'Select Filter By'"
-    placeholder="Enter more than 2 words/digits"
+    placeholder="{{ 'Enter ' + placeHolder + ' to search' }}"
   />
 </div>

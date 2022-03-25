@@ -17,6 +17,8 @@ export class KoruTableComponent implements OnInit {
           (this.currentPage - 1) * this.dataPerPage,
           this.currentPage * this.dataPerPage - 1
         );
+      } else {
+        this.allData = [];
       }
     });
     this._dataShareService.currentPage.subscribe((res) => {
@@ -174,7 +176,10 @@ export class KoruTableComponent implements OnInit {
           return 0;
         });
       } else {
-        return this.allDataDeepCopy;
+        return this.allDataDeepCopy.slice(
+          (this.currentPage - 1) * this.dataPerPage,
+          this.currentPage * this.dataPerPage - 1
+        );
       }
     }
     if (dataType === 'number') {
@@ -187,7 +192,10 @@ export class KoruTableComponent implements OnInit {
           return b[keyName] - a[keyName];
         });
       } else {
-        return this.allDataDeepCopy;
+        return this.allDataDeepCopy.slice(
+          (this.currentPage - 1) * this.dataPerPage,
+          this.currentPage * this.dataPerPage - 1
+        );
       }
     }
   }
