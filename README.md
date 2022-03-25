@@ -5,7 +5,7 @@ This project was created in Angular version 13.1.2.
 ## How to setUp and Run
 0. Download or clone this project in your system.
 1. To run the project you have to install Node Modules. In your terminal do: `npm install`.
-2.Once all Node modules installed ,to run enter `ng serve`. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source    files.
+2. Once all Node modules installed ,to run enter `ng serve`. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source    files.
 
 ## Features
 0. when you run this project you will see a simple view Data button, if you press a modal with table data will open.
