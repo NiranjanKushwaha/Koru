@@ -3,7 +3,13 @@
 }
 
 .modal-body {
-  height: 28rem;
+  height: 27rem;
   overflow-y: scroll;
   padding: 0.2rem;
+}
+
+.modal-footer {
+  display: block;
+  width: 100%;
+  padding: 0 !important;
 }

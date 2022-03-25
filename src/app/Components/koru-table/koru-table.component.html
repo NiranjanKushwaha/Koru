@@ -1,7 +1,4 @@
 <div>
-  <div class="text-center">
-    <search-data (filteredOutput)="handleFilteredData($event)"></search-data>
-  </div>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -75,19 +72,10 @@
             >
               <i class="fa-solid fa-trash-can"></i>
             </button>
-            <!-- <button
-              class="btn btn-outline-primary"
-              *ngIf="data.isLast"
-              style="margin-left: 5px"
-              (click)="addNewRow()"
-            >
-              <i class="fa-solid fa-plus"></i>
-            </button> -->
           </td>
         </tr>
-        <!-- *ngIf="shouldAddNewField" -->
         <tr>
-          <td>{{ allData.length + 1 }}</td>
+          <td>*</td>
           <td>
             <input
               type="text"

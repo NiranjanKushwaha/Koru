@@ -8,4 +8,5 @@ export class DataShareService {
   constructor() {}
   searchData = new Subject<any>();
   filteredData = new Subject<any>();
+  currentPage = new Subject<number>();
 }

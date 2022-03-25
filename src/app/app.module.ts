@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchDataComponent } from './Components/search-data/search-data.component';
 import { NumbersOnlyDirective } from './Directives/numbers-only.directive';
+import { PaginationComponent } from './Components/pagination/pagination.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,6 +17,7 @@ import { NumbersOnlyDirective } from './Directives/numbers-only.directive';
     KoruTableComponent,
     SearchDataComponent,
     NumbersOnlyDirective,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,

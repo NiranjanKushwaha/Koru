@@ -13,7 +13,19 @@ export class KoruTableComponent implements OnInit {
   ) {
     this._dataShareService.filteredData.subscribe((res) => {
       if (res && res.length) {
-        this.allData = res;
+        this.allData = res.slice(
+          (this.currentPage - 1) * this.dataPerPage,
+          this.currentPage * this.dataPerPage - 1
+        );
+      }
+    });
+    this._dataShareService.currentPage.subscribe((res) => {
+      if (res) {
+        this.currentPage = res;
+        this.allData = this.allDataDeepCopy.slice(
+          (this.currentPage - 1) * this.dataPerPage,
+          this.currentPage * this.dataPerPage - 1
+        );
       }
     });
   }
@@ -34,9 +46,16 @@ export class KoruTableComponent implements OnInit {
     designation: '',
     isLast: true,
   };
+
+  currentPage: number = 1;
+  dataPerPage: number = 5;
   ngOnInit(): void {
     this.http.get('../../../assets/data.json').subscribe((res) => {
       this.allData = res;
+      this.allData = this.allData.slice(
+        (this.currentPage - 1) * this.dataPerPage,
+        this.currentPage * this.dataPerPage - 1
+      );
       if (Array.isArray(res)) {
         this.allDataDeepCopy = res.slice();
       }
@@ -171,10 +190,6 @@ export class KoruTableComponent implements OnInit {
         return this.allDataDeepCopy;
       }
     }
-  }
-
-  handleFilteredData(data: any) {
-    this.allData = data;
   }
 
   deleteRow(id: any) {
