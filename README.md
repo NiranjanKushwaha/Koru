@@ -1,4 +1,4 @@
-# Koru (I have applied my own thoughts to make it better)
+# Koru
 
 This project was created in Angular version 13.1.2.
 
