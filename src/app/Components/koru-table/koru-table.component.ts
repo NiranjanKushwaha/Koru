@@ -46,7 +46,6 @@ export class KoruTableComponent implements OnInit {
     name: '',
     mob: '',
     designation: '',
-    // isLast: true,
   };
 
   currentPage: number = 1;
@@ -117,15 +116,6 @@ export class KoruTableComponent implements OnInit {
         'string'
       );
     }
-
-    // let lastItem = this.allData.at(-1);
-    // this.allData.map((el: any, index: number) => {
-    //   if (el.id === lastItem.id) {
-    //     el.isLast = true;
-    //   } else {
-    //     el.isLast = false;
-    //   }
-    // });
   }
 
   getSortingOrder(value: number, keyName: string): any {
@@ -207,7 +197,6 @@ export class KoruTableComponent implements OnInit {
       this.allDataDeepCopy = this.allDataDeepCopy.filter(
         (item: any) => item.id !== id
       );
-      // this.allData.at(-1).isLast = true;
       this.allDataDeepCopy = this.allData.slice();
     }
   }
@@ -223,20 +212,12 @@ export class KoruTableComponent implements OnInit {
         (this.currentPage - 1) * this.dataPerPage,
         this.currentPage * this.dataPerPage - 1
       );
-      // this.allData.map((item: any) => {
-      //   if (item.id === this.newRowData.id) {
-      //     item.isLast = true;
-      //   } else {
-      //     item.isLast = false;
-      //   }
-      // });
 
       this.newRowData = {
         id: null,
         name: '',
         mob: '',
         designation: '',
-        // isLast: true,
       };
     }
   }

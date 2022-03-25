@@ -3,91 +3,78 @@
     "id": 1,
     "name": "Heena",
     "mob": 9917075200,
-    "designation": "Backend developer",
-    "isLast": false
+    "designation": "Backend developer"
   },
   {
     "id": 2,
     "name": "Bikki",
     "mob": 8923640679,
-    "designation": "FrontEnd developer",
-    "isLast": false
+    "designation": "FrontEnd developer"
   },
   {
     "id": 3,
     "name": "Amit",
     "mob": 8767357114,
-    "designation": "Full stack developer",
-    "isLast": false
+    "designation": "Full stack developer"
   },
   {
     "id": 4,
     "name": "Neeraj",
     "mob": 9908920908,
-    "designation": "software developer",
-    "isLast": false
+    "designation": "software developer"
   },
   {
     "id": 5,
     "name": "Rajesh",
     "mob": 7890997614,
-    "designation": "FrontEnd developer",
-    "isLast": false
+    "designation": "FrontEnd developer"
   },
   {
     "id": 6,
     "name": "Kumar",
     "mob": 8978331212,
-    "designation": "Database Engineer",
-    "isLast": false
+    "designation": "Database Engineer"
   },
   {
     "id": 7,
     "name": "Preetam",
     "mob": 8589781567,
-    "designation": "UI developer",
-    "isLast": false
+    "designation": "UI developer"
   },
   {
     "id": 8,
     "name": "Nirankar",
     "mob": 9899196437,
-    "designation": "UX designer",
-    "isLast": false
+    "designation": "UX designer"
   },
   {
     "id": 9,
     "name": "Ritwik",
     "mob": 8979629091,
-    "designation": "HR",
-    "isLast": false
+    "designation": "HR"
   },
   {
     "id": 10,
     "name": "Ganesh",
     "mob": 7090287263,
-    "designation": "Vice president",
-    "isLast": false
+    "designation": "Vice president"
   },
   {
     "id": 11,
     "name": "Manoj",
     "mob": 9878910931,
-    "designation": "CTO",
-    "isLast": false
+    "designation": "CTO"
   },
   {
     "id": 12,
     "name": "Pandu",
     "mob": 7894569026,
-    "designation": "COO",
-    "isLast": false
+    "designation": "COO"
   },
   {
     "id": 13,
     "name": "Dindayal",
     "mob": 9596960789,
-    "designation": "FrontEnd developer",
-    "isLast": true
+    "designation": "FrontEnd developer"
   }
 ]

@@ -15,6 +15,9 @@
 }
 
 @media (max-width: 760px) {
+  .modal-title {
+    font-size: 0.9rem;
+  }
   .modal-footer > * {
     margin: 0 !important;
   }
