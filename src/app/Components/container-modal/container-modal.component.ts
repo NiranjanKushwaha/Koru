@@ -10,12 +10,18 @@ export class ContainerModalComponent {
   constructor(
     private modalService: NgbModal,
     private _dataShareService: DataShareService
-  ) {}
+  ) {
+    this._dataShareService.dataForPagination.subscribe((res) => {
+      if (res && res.length) {
+        this.totalCount = res.length;
+      }
+    });
+  }
   @ViewChild('modal')
   private modalContent: TemplateRef<ContainerModalComponent>;
   private modalRef: NgbModalRef;
   dataPerPage: number = 5;
-  totalCount: number = 13;
+  totalCount: number = 0;
   pageNumber: number = 1;
   open() {
     this.modalRef = this.modalService.open(this.modalContent, {

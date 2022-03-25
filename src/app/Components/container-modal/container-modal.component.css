@@ -13,3 +13,9 @@
   width: 100%;
   padding: 0 !important;
 }
+
+@media (max-width: 760px) {
+  .modal-footer > * {
+    margin: 0 !important;
+  }
+}

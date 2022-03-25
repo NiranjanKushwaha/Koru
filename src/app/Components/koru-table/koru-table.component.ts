@@ -39,14 +39,14 @@ export class KoruTableComponent implements OnInit {
   };
 
   allData: any;
-  allDataDeepCopy: Array<any> = [];
+  allDataDeepCopy: any = [];
   shouldAddNewField: boolean = false;
   newRowData = {
     id: null,
     name: '',
     mob: '',
     designation: '',
-    isLast: true,
+    // isLast: true,
   };
 
   currentPage: number = 1;
@@ -54,6 +54,7 @@ export class KoruTableComponent implements OnInit {
   ngOnInit(): void {
     this.http.get('../../../assets/data.json').subscribe((res) => {
       this.allData = res;
+      this._dataShareService.dataForPagination.next(this.allData);
       this.allData = this.allData.slice(
         (this.currentPage - 1) * this.dataPerPage,
         this.currentPage * this.dataPerPage - 1
@@ -117,14 +118,14 @@ export class KoruTableComponent implements OnInit {
       );
     }
 
-    let lastItem = this.allData.at(-1);
-    this.allData.map((el: any, index: number) => {
-      if (el.id === lastItem.id) {
-        el.isLast = true;
-      } else {
-        el.isLast = false;
-      }
-    });
+    // let lastItem = this.allData.at(-1);
+    // this.allData.map((el: any, index: number) => {
+    //   if (el.id === lastItem.id) {
+    //     el.isLast = true;
+    //   } else {
+    //     el.isLast = false;
+    //   }
+    // });
   }
 
   getSortingOrder(value: number, keyName: string): any {
@@ -206,35 +207,43 @@ export class KoruTableComponent implements OnInit {
       this.allDataDeepCopy = this.allDataDeepCopy.filter(
         (item: any) => item.id !== id
       );
-      this.allData.at(-1).isLast = true;
+      // this.allData.at(-1).isLast = true;
       this.allDataDeepCopy = this.allData.slice();
     }
   }
   addNewRow() {
-    const found = this.allData.some((el: any) => el.id === this.newRowData.id);
+    const found = this.allData.some(
+      (el: any) =>
+        el.name === this.newRowData.name || el.mob === this.newRowData.mob
+    );
     if (!found) {
-      this.allData.push(this.newRowData);
-      this.allData.map((item: any) => {
-        if (item.id === this.newRowData.id) {
-          item.isLast = true;
-        } else {
-          item.isLast = false;
-        }
-      });
+      this.allDataDeepCopy.push(this.newRowData);
+      this._dataShareService.dataForPagination.next(this.allDataDeepCopy);
+      this.allData = this.allDataDeepCopy.slice(
+        (this.currentPage - 1) * this.dataPerPage,
+        this.currentPage * this.dataPerPage - 1
+      );
+      // this.allData.map((item: any) => {
+      //   if (item.id === this.newRowData.id) {
+      //     item.isLast = true;
+      //   } else {
+      //     item.isLast = false;
+      //   }
+      // });
 
       this.newRowData = {
         id: null,
         name: '',
         mob: '',
         designation: '',
-        isLast: true,
+        // isLast: true,
       };
     }
   }
 
   isAllFieldsNotMapped(): boolean {
     let isAnyFieldNotMapped: boolean = true;
-    this.newRowData.id = this.allData.length + 1;
+    this.newRowData.id = this.allDataDeepCopy.at(-1).id + 1;
     Object.keys(this.newRowData).forEach((key: any) => {
       if (
         this.newRowData['name'] !== '' &&

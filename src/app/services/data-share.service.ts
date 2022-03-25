@@ -9,4 +9,5 @@ export class DataShareService {
   searchData = new Subject<any>();
   filteredData = new Subject<any>();
   currentPage = new Subject<number>();
+  dataForPagination = new Subject<any>();
 }
