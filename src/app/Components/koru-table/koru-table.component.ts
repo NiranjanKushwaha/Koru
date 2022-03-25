@@ -197,13 +197,16 @@ export class KoruTableComponent implements OnInit {
     }
   }
 
-  deleteRow(id: any) {
-    if (this.allData && this.allData.length > 1) {
-      this.allData = this.allData.filter((item: any) => item.id !== id);
+  deleteRow(mobileNumber: number) {
+    if (this.allDataDeepCopy && this.allDataDeepCopy.length > 1) {
       this.allDataDeepCopy = this.allDataDeepCopy.filter(
-        (item: any) => item.id !== id
+        (item: any) => item.mob !== mobileNumber
       );
-      this.allDataDeepCopy = this.allData.slice();
+      this.allData = this.allDataDeepCopy.slice(
+        (this.currentPage - 1) * this.dataPerPage,
+        this.currentPage * this.dataPerPage
+      );
+      this._dataShareService.dataForPagination.next(this.allDataDeepCopy);
     }
   }
   addNewRow() {
