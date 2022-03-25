@@ -10,4 +10,5 @@ export class DataShareService {
   filteredData = new Subject<any>();
   currentPage = new Subject<number>();
   dataForPagination = new Subject<any>();
+  allDataCopy = new Subject<any>();
 }

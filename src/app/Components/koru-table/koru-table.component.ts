@@ -13,10 +13,14 @@ export class KoruTableComponent implements OnInit {
   ) {
     this._dataShareService.filteredData.subscribe((res) => {
       if (res && res.length) {
-        this.allData = res.slice(
-          (this.currentPage - 1) * this.dataPerPage,
-          this.currentPage * this.dataPerPage - 1
-        );
+        if (res.length > this.dataPerPage) {
+          this.allData = res.slice(
+            (this.currentPage - 1) * this.dataPerPage,
+            this.currentPage * this.dataPerPage
+          );
+        } else {
+          this.allData = res;
+        }
       } else {
         this.allData = [];
       }
@@ -26,8 +30,9 @@ export class KoruTableComponent implements OnInit {
         this.currentPage = res;
         this.allData = this.allDataDeepCopy.slice(
           (this.currentPage - 1) * this.dataPerPage,
-          this.currentPage * this.dataPerPage - 1
+          this.currentPage * this.dataPerPage
         );
+        this._dataShareService.searchData.next(this.allData);
       }
     });
   }
@@ -54,9 +59,10 @@ export class KoruTableComponent implements OnInit {
     this.http.get('../../../assets/data.json').subscribe((res) => {
       this.allData = res;
       this._dataShareService.dataForPagination.next(this.allData);
+      this._dataShareService.allDataCopy.next(this.allData);
       this.allData = this.allData.slice(
         (this.currentPage - 1) * this.dataPerPage,
-        this.currentPage * this.dataPerPage - 1
+        this.currentPage * this.dataPerPage
       );
       if (Array.isArray(res)) {
         this.allDataDeepCopy = res.slice();
@@ -169,7 +175,7 @@ export class KoruTableComponent implements OnInit {
       } else {
         return this.allDataDeepCopy.slice(
           (this.currentPage - 1) * this.dataPerPage,
-          this.currentPage * this.dataPerPage - 1
+          this.currentPage * this.dataPerPage
         );
       }
     }
@@ -185,7 +191,7 @@ export class KoruTableComponent implements OnInit {
       } else {
         return this.allDataDeepCopy.slice(
           (this.currentPage - 1) * this.dataPerPage,
-          this.currentPage * this.dataPerPage - 1
+          this.currentPage * this.dataPerPage
         );
       }
     }
@@ -210,7 +216,7 @@ export class KoruTableComponent implements OnInit {
       this._dataShareService.dataForPagination.next(this.allDataDeepCopy);
       this.allData = this.allDataDeepCopy.slice(
         (this.currentPage - 1) * this.dataPerPage,
-        this.currentPage * this.dataPerPage - 1
+        this.currentPage * this.dataPerPage
       );
 
       this.newRowData = {

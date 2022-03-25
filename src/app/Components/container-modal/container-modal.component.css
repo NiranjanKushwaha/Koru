@@ -4,8 +4,8 @@
 
 .modal-body {
   height: 27rem;
-  overflow-y: scroll;
-  padding: 0.2rem;
+  overflow-y: hidden;
+  padding: 0rem 0.2rem;
 }
 
 .modal-footer {
@@ -20,5 +20,10 @@
   }
   .modal-footer > * {
     margin: 0 !important;
+  }
+
+  .close {
+    position: relative;
+    top: -1.2rem;
   }
 }
