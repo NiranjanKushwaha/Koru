@@ -25,3 +25,14 @@
 .logo img {
   width: 10rem;
 }
+
+.modal-header {
+  background-color: dodgerblue;
+}
+
+.cancel_btn {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50% 50%;
+  color: #fff;
+}

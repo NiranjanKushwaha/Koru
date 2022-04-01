@@ -11,10 +11,52 @@
   </div>
   <div class="row view_data_btn">
     <div class="col-12">
-      <button class="btn btn-lg btn-outline-primary mt-5" (click)="openModal()">
+      <!-- <button class="btn btn-lg btn-outline-primary mt-5" (click)="openModal()">
         view Data
+      </button> -->
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#koruModal"
+      >
+        Launch demo modal
       </button>
     </div>
   </div>
 </div>
-<container-modal #modal> </container-modal>
+<!-- <container-modal #modal> </container-modal> -->
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="koruModal"
+  tabindex="-1"
+  aria-labelledby="koruModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-white" id="koruModalLabel">Alerts</h5>
+        <button
+          type="button"
+          class="btn-close text-white"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">...</div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-white text-white cancel_btn"
+          data-bs-dismiss="modal"
+        >
+          <span class="text-white">x</span>
+        </button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
