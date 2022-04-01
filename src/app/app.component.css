@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
 }
+
 .view_data_btn {
   text-align: center;
 }
@@ -28,11 +29,78 @@
 
 .modal-header {
   background-color: dodgerblue;
+  height: 3rem;
 }
 
-.cancel_btn {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50% 50%;
+.modal-footer {
+  padding: 0.2rem;
+}
+
+.btn-white {
+  border-radius: 50%;
+  padding: 0.5em;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #fff;
   color: #fff;
+  position: relative;
+}
+
+.btn-white:hover {
+  border: 2px solid #fff;
+  background-color: red;
+  color: #ffffff;
+}
+
+.btn-white::before {
+  content: " ";
+  position: absolute;
+  display: block;
+  background-color: #fff;
+  width: 2px;
+  left: 12px;
+  top: 5px;
+  bottom: 5px;
+  transform: rotate(45deg);
+}
+
+.btn-white::after {
+  content: " ";
+  position: absolute;
+  display: block;
+  background-color: #fff;
+  height: 2px;
+  top: 12px;
+  left: 5px;
+  right: 5px;
+  transform: rotate(45deg);
+}
+
+.nav-tabs {
+  border-bottom: 2px solid dodgerblue;
+}
+
+.nav-link .active {
+  background: #fff;
+  border-top: 3px solid dodgerblue !important;
+  border-left: 3px solid dodgerblue !important;
+  border-right: 3px solid dodgerblue !important;
+  padding: 3px;
+  color: dodgerblue;
+}
+
+.nav-link {
+  background-color: dodgerblue;
+  color: #fff;
+  border-left: 0.5px solid #000;
+  border-right: 0.5px solid #000;
+}
+
+.border-right {
+  border-right: 2px solid silver;
+  height: fit-content;
+}
+
+.addFields:first-child{
+  /* width:5rem; */
 }

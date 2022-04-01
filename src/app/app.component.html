@@ -11,9 +11,6 @@
   </div>
   <div class="row view_data_btn">
     <div class="col-12">
-      <!-- <button class="btn btn-lg btn-outline-primary mt-5" (click)="openModal()">
-        view Data
-      </button> -->
       <button
         type="button"
         class="btn btn-primary"
@@ -25,9 +22,6 @@
     </div>
   </div>
 </div>
-<!-- <container-modal #modal> </container-modal> -->
-
-<!-- Modal -->
 <div
   class="modal fade"
   id="koruModal"
@@ -39,23 +33,225 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title text-white" id="koruModalLabel">Alerts</h5>
-        <button
-          type="button"
-          class="btn-close text-white"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn btn-white"></button>
       </div>
-      <div class="modal-body">...</div>
+      <div class="modal-body">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation" style="margin-left: 15rem">
+            <button
+              class="nav-link active"
+              id="home-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#home"
+              type="button"
+              role="tab"
+              aria-controls="home"
+              aria-selected="true"
+            >
+              Immunization Alerts
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="profile-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#profile"
+              type="button"
+              role="tab"
+              aria-controls="profile"
+              aria-selected="false"
+            >
+              Lab Alerts
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="contact-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#contact"
+              type="button"
+              role="tab"
+              aria-controls="contact"
+              aria-selected="false"
+            >
+              DI Alerts
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="contact-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#contact"
+              type="button"
+              role="tab"
+              aria-controls="contact"
+              aria-selected="false"
+            >
+              Procedure Alerts
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="contact-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#contact"
+              type="button"
+              role="tab"
+              aria-controls="contact"
+              aria-selected="false"
+            >
+              RX Specific Alerts
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="contact-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#contact"
+              type="button"
+              role="tab"
+              aria-controls="contact"
+              aria-selected="false"
+            >
+              DX Specific Alerts
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="contact-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#contact"
+              type="button"
+              role="tab"
+              aria-controls="contact"
+              aria-selected="false"
+            >
+              Patient Specific Alerts
+            </button>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div
+            class="tab-pane fade show active"
+            id="home"
+            role="tabpanel"
+            aria-labelledby="home-tab"
+          >
+            <div class="row mt-3">
+              <div class="col-md-8 border-right">
+                <h6 class="text-primary">Immunization Alerts</h6>
+                <div class="action_btns d-flex justify-content-between">
+                  <div>Find <input type="text" /></div>
+                  <div>
+                    <button class="btn btn-secondary" (click)="handleDelete()">
+                      Delete
+                    </button>
+                  </div>
+                </div>
+                <div class="table_data mt-2">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">
+                          <input
+                            type="checkbox"
+                            (change)="handleAllCheckboxes($event)"
+                          />
+                        </th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">WebReference</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of allData; index as i">
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="{{ item.id }}"
+                            #inps
+                            (change)="handleSingleCheckbox($event, item.id)"
+                          />
+                        </td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.description }}</td>
+                        <td>{{ item.webReference }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="addFields_container mt-3">
+                  <div class="d-flex justify-content-around addFields">
+                    <div style="width: 5rem">
+                      <p>Name</p>
+                    </div>
+                    <div>
+                      <input type="text" />
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-around addFields">
+                    <div>
+                      <p>Description</p>
+                    </div>
+                    <div>
+                      <input type="text" />
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-around addFields">
+                    <div style="width: 5rem">
+                      <p>WebReference</p>
+                    </div>
+                    <div>
+                      <input type="text" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="profile"
+            role="tabpanel"
+            aria-labelledby="profile-tab"
+          >
+            ...
+          </div>
+          <div
+            class="tab-pane fade"
+            id="contact"
+            role="tabpanel"
+            aria-labelledby="contact-tab"
+          >
+            ...
+          </div>
+        </div>
+      </div>
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-white text-white cancel_btn"
-          data-bs-dismiss="modal"
-        >
-          <span class="text-white">x</span>
-        </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="row" style="width: 100%">
+          <div class="col-7">
+            <p>Total Results: {{ allData.length }}</p>
+          </div>
+          <div class="col-5" style="text-align: right">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              style="margin-right: 1.5rem"
+            >
+              Cancel
+            </button>
+            <button type="button" class="btn btn-primary ml-2">Save</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
