@@ -26,6 +26,8 @@ export class AppComponent implements OnInit {
   selectedCheckBoxes: any = [];
   allData: any = [];
   allDataDeepCopy: any = [];
+  searchText: any;
+
   getAllData(): Observable<any[]> {
     return this.http
       .get<any>('../../../assets/data.json')
@@ -37,7 +39,7 @@ export class AppComponent implements OnInit {
       this.allDataDeepCopy = res.data;
     });
   }
-
+  //------------------------------------------- checkboxes handling code goes here
   handleAllCheckboxes(data: any) {
     console.log(data.target.checked);
     this.isAllSelected = data.target.checked;
@@ -71,7 +73,7 @@ export class AppComponent implements OnInit {
     }
     this.selectedCheckBoxes.sort((a: any, b: any) => a.id - b.id);
   }
-
+  //------------------------------------------- deletion code goes here
   handleDelete() {
     this.allData = this.allData.filter((item: any) => {
       let temp = this.selectedCheckBoxes.some((checkbox: any) => {
@@ -85,7 +87,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  // sorting code goes here
+  //------------------------------------------- sorting code goes here
   tableSortOrder: any = {
     webReferenceSort: { type: '', value: 0 },
     nameSort: { type: '', value: 0 },
@@ -181,12 +183,28 @@ export class AppComponent implements OnInit {
           return 0;
         });
       } else {
-        // return this.allDataDeepCopy.slice(
-        //   (this.currentPage - 1) * this.dataPerPage,
-        //   this.currentPage * this.dataPerPage
-        // );
         return this.allDataDeepCopy;
       }
+    }
+  }
+
+  //------------------------------------------- Searching code goes here
+  Search(data: any) {
+    if (data.length) {
+      console.log(data);
+      let filteredData = [];
+      filteredData = this.allDataDeepCopy.filter((item: any) => {
+        if (
+          item.name.toLowerCase().includes(data.toLowerCase()) ||
+          item.description.toLowerCase().includes(data.toLowerCase()) ||
+          item.webReference.toLowerCase().includes(data.toLowerCase())
+        ) {
+          return item;
+        }
+      });
+      this.allData = filteredData;
+    } else {
+      this.allData = this.allDataDeepCopy;
     }
   }
 }

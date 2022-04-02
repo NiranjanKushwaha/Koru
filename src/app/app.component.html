@@ -147,7 +147,14 @@
               <div class="col-md-7 border-right" style="height: 25rem">
                 <h6 class="text-primary">Immunization Alerts</h6>
                 <div class="action_btns d-flex justify-content-between">
-                  <div>Find <input type="text" /></div>
+                  <div>
+                    Find
+                    <input
+                      type="text"
+                      [ngModel]="searchText"
+                      (ngModelChange)="Search($event)"
+                    />
+                  </div>
                   <div>
                     <button class="btn btn-secondary" (click)="handleDelete()">
                       Delete
