@@ -143,8 +143,8 @@
             role="tabpanel"
             aria-labelledby="home-tab"
           >
-            <div class="row mt-3">
-              <div class="col-md-8 border-right">
+            <div class="row mt-3 fit_size">
+              <div class="col-md-7 border-right" style="height: 25rem">
                 <h6 class="text-primary">Immunization Alerts</h6>
                 <div class="action_btns d-flex justify-content-between">
                   <div>Find <input type="text" /></div>
@@ -155,7 +155,7 @@
                   </div>
                 </div>
                 <div class="table_data mt-2">
-                  <table class="table table-bordered">
+                  <table class="table table-bordered scrolldown">
                     <thead>
                       <tr>
                         <th scope="col">
@@ -187,9 +187,12 @@
                   </table>
                 </div>
               </div>
+              <!-- <div class="col-md-1">
+                <div class="verticalBar"></div>
+              </div> -->
               <div class="col-md-4">
                 <div class="addFields_container mt-3">
-                  <div class="d-flex justify-content-around addFields">
+                  <div class="d-flex justify-content-between addFields">
                     <div style="width: 5rem">
                       <p>Name</p>
                     </div>
@@ -197,7 +200,7 @@
                       <input type="text" />
                     </div>
                   </div>
-                  <div class="d-flex justify-content-around addFields">
+                  <div class="d-flex justify-content-between addFields">
                     <div>
                       <p>Description</p>
                     </div>
@@ -205,7 +208,7 @@
                       <input type="text" />
                     </div>
                   </div>
-                  <div class="d-flex justify-content-around addFields">
+                  <div class="d-flex justify-content-between addFields">
                     <div style="width: 5rem">
                       <p>WebReference</p>
                     </div>
