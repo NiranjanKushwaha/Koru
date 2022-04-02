@@ -170,19 +170,28 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let item of allData; index as i">
-                        <td>
-                          <input
-                            type="checkbox"
-                            id="{{ item.id }}"
-                            #inps
-                            (change)="handleSingleCheckbox($event, item.id)"
-                          />
-                        </td>
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.description }}</td>
-                        <td>{{ item.webReference }}</td>
-                      </tr>
+                      <ng-container
+                        *ngIf="allData && allData.length; else noDataFound"
+                      >
+                        <tr *ngFor="let item of allData; index as i">
+                          <td>
+                            <input
+                              type="checkbox"
+                              id="{{ item.id }}"
+                              #inps
+                              (change)="handleSingleCheckbox($event, item.id)"
+                            />
+                          </td>
+                          <td>{{ item.name }}</td>
+                          <td>{{ item.description }}</td>
+                          <td>{{ item.webReference }}</td>
+                        </tr>
+                      </ng-container>
+                      <ng-template #noDataFound>
+                        <h6 class="text-center text-danger mt-3">
+                          No data found
+                        </h6>
+                      </ng-template>
                     </tbody>
                   </table>
                 </div>

@@ -54,8 +54,6 @@ export class AppComponent implements OnInit {
         inputbox.nativeElement.checked = false;
       });
     }
-
-    console.log('selected checkboxes: ', this.selectedCheckBoxes);
   }
 
   handleSingleCheckbox(event: any, checkboxId: number) {
@@ -72,16 +70,18 @@ export class AppComponent implements OnInit {
       );
     }
     this.selectedCheckBoxes.sort((a: any, b: any) => a.id - b.id);
-    console.log('selectionList: ', this.selectedCheckBoxes);
   }
 
   handleDelete() {
-    this.allData = this.allDataDeepCopy.filter((item: any) => {
-      this.selectedCheckBoxes.forEach((checkbox: any) => {
-        if (item.id !== checkbox.id) {
+    this.allData = this.allData.filter((item: any) => {
+      let temp = this.selectedCheckBoxes.some((checkbox: any) => {
+        if (item.id === checkbox.id) {
           return item;
         }
       });
+      if (!temp) {
+        return item;
+      }
     });
   }
 }
