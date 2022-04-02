@@ -36,6 +36,7 @@ export class KoruTableComponent implements OnInit {
       }
     });
   }
+
   tableSortOrder: any = {
     idSort: { type: '', value: 0 },
     nameSort: { type: '', value: 0 },

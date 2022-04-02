@@ -164,9 +164,59 @@
                             (change)="handleAllCheckboxes($event)"
                           />
                         </th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">WebReference</th>
+                        <th scope="col" (click)="sort('nameSort')">
+                          Name
+                          <span
+                            class="upArrow"
+                            *ngIf="tableSortOrder.nameSort.type === 'ascending'"
+                            ><i class="fa-solid fa-arrow-up"></i
+                          ></span>
+                          <span
+                            class="downArrow"
+                            *ngIf="
+                              tableSortOrder.nameSort.type === 'descending'
+                            "
+                            ><i class="fa-solid fa-arrow-down"></i>
+                          </span>
+                        </th>
+                        <th scope="col" (click)="sort('descriptionSort')">
+                          Description
+                          <span
+                            class="upArrow"
+                            *ngIf="
+                              tableSortOrder.descriptionSort.type ===
+                              'ascending'
+                            "
+                            ><i class="fa-solid fa-arrow-up"></i
+                          ></span>
+                          <span
+                            class="downArrow"
+                            *ngIf="
+                              tableSortOrder.descriptionSort.type ===
+                              'descending'
+                            "
+                            ><i class="fa-solid fa-arrow-down"></i>
+                          </span>
+                        </th>
+                        <th scope="col" (click)="sort('webReferenceSort')">
+                          WebReference
+                          <span
+                            class="upArrow"
+                            *ngIf="
+                              tableSortOrder.webReferenceSort.type ===
+                              'ascending'
+                            "
+                            ><i class="fa-solid fa-arrow-up"></i
+                          ></span>
+                          <span
+                            class="downArrow"
+                            *ngIf="
+                              tableSortOrder.webReferenceSort.type ===
+                              'descending'
+                            "
+                            ><i class="fa-solid fa-arrow-down"></i>
+                          </span>
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
