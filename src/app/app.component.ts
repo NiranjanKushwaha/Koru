@@ -1,15 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import {
-  Component,
-  ViewChild,
-  OnInit,
-  ViewChildren,
-  QueryList,
-  ElementRef,
-} from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { ContainerModalComponent } from './Components/container-modal/container-modal.component';
-import { DataShareService } from './services/data-share.service';
 
 @Component({
   selector: 'app-root',
@@ -17,10 +8,7 @@ import { DataShareService } from './services/data-share.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  constructor(
-    private http: HttpClient,
-    private _dataShareService: DataShareService
-  ) {}
+  constructor(private http: HttpClient) {}
 
   @ViewChildren('inps') inps: QueryList<any>;
   isAllSelected: boolean = false;
