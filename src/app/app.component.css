@@ -135,7 +135,7 @@ table.scrolldown tbody {
 }
 
 table.scrolldown tbody::-webkit-scrollbar {
-  width: 5px;
+  width: 3px;
   z-index: -1;
 }
  

@@ -5,6 +5,7 @@ import {
   OnInit,
   ViewChildren,
   QueryList,
+  ElementRef,
 } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { ContainerModalComponent } from './Components/container-modal/container-modal.component';
@@ -27,6 +28,7 @@ export class AppComponent implements OnInit {
   allData: any = [];
   allDataDeepCopy: any = [];
   searchText: any;
+  @ViewChildren('row') row: QueryList<any>;
 
   getAllData(): Observable<any[]> {
     return this.http
@@ -229,7 +231,9 @@ export class AppComponent implements OnInit {
       if (!found) {
         this.allDataDeepCopy.push(this.newFieldsData);
         this.allData = this.allDataDeepCopy;
+        this.scrollToView(this.newFieldsData.id);
       }
+
       this.clearAllFields();
     }
   }
@@ -246,6 +250,14 @@ export class AppComponent implements OnInit {
     }
   }
 
+  scrollToView(currentItemIndex: number) {
+    this.row.map((rw) => {
+      if (parseInt(rw.nativeElement.id) + 1 === currentItemIndex) {
+        rw.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  }
+
   clearAllFields() {
     this.newFieldsData = {
       id: 0,
@@ -254,7 +266,7 @@ export class AppComponent implements OnInit {
       webReference: '',
     };
   }
-
+  //----------------------------- code for closing modal------------------------------------
   close() {
     this.clearAllFields();
   }
