@@ -183,3 +183,11 @@ input[type='text']{
   background-color: red;
   color: #fff;
 }
+
+.footer_ok_btn{
+background-color: rgb(161, 199, 238);
+}
+
+.footer_ok_btn:hover{
+  background-color: dodgerblue;
+}

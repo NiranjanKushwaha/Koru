@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
       this.allDataDeepCopy = res.data;
     });
   }
-  //------------------------------------------- checkboxes handling code goes here
+  //------------------------------------------- checkboxes handling code goes here --------------------
   handleAllCheckboxes(data: any) {
     console.log(data.target.checked);
     this.isAllSelected = data.target.checked;
@@ -73,7 +73,7 @@ export class AppComponent implements OnInit {
     }
     this.selectedCheckBoxes.sort((a: any, b: any) => a.id - b.id);
   }
-  //------------------------------------------- deletion code goes here
+  //------------------------------------------- deletion code goes here --------------------
   handleDelete() {
     this.allData = this.allData.filter((item: any) => {
       let temp = this.selectedCheckBoxes.some((checkbox: any) => {
@@ -87,7 +87,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  //------------------------------------------- sorting code goes here
+  //------------------------------------------- sorting code goes here --------------------
   tableSortOrder: any = {
     webReferenceSort: { type: '', value: 0 },
     nameSort: { type: '', value: 0 },
@@ -188,7 +188,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  //------------------------------------------- Searching code goes here
+  //------------------------------------------- Searching code goes here --------------------
   Search(data: any) {
     if (data.length) {
       console.log(data);
@@ -206,5 +206,56 @@ export class AppComponent implements OnInit {
     } else {
       this.allData = this.allDataDeepCopy;
     }
+  }
+
+  //------------------------------------------- Adding new fields code goes here --------------------
+  newFieldsData: {
+    id: number;
+    name: string;
+    description: string;
+    webReference: string;
+  } = {
+    id: 0,
+    name: '',
+    description: '',
+    webReference: '',
+  };
+  addNewData() {
+    this.newFieldsData.id = this.allData.at(-1).id + 1;
+    if (this.isAllFieldsFilled()) {
+      const found = this.allDataDeepCopy.some(
+        (el: any) => el.id === this.newFieldsData.id
+      );
+      if (!found) {
+        this.allDataDeepCopy.push(this.newFieldsData);
+        this.allData = this.allDataDeepCopy;
+      }
+      this.clearAllFields();
+    }
+  }
+
+  isAllFieldsFilled(): boolean {
+    if (
+      this.newFieldsData.name !== '' &&
+      this.newFieldsData.description !== '' &&
+      this.newFieldsData.webReference !== ''
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  clearAllFields() {
+    this.newFieldsData = {
+      id: 0,
+      name: '',
+      description: '',
+      webReference: '',
+    };
+  }
+
+  close() {
+    this.clearAllFields();
   }
 }

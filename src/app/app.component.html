@@ -33,7 +33,12 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title text-white" id="koruModalLabel">Alerts</h5>
-        <button type="button" class="btn btn-white"></button>
+        <button
+          type="button"
+          class="btn btn-white"
+          data-bs-dismiss="modal"
+          (click)="close()"
+        ></button>
       </div>
       <div class="modal-body">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -263,7 +268,7 @@
                       <p>Name</p>
                     </div>
                     <div>
-                      <input type="text" />
+                      <input type="text" [(ngModel)]="newFieldsData.name" />
                     </div>
                   </div>
                   <div class="d-flex justify-content-between addFields">
@@ -271,7 +276,10 @@
                       <p>Description</p>
                     </div>
                     <div>
-                      <input type="text" />
+                      <input
+                        type="text"
+                        [(ngModel)]="newFieldsData.description"
+                      />
                     </div>
                   </div>
                   <div class="d-flex justify-content-between addFields">
@@ -279,12 +287,21 @@
                       <p>WebReference</p>
                     </div>
                     <div>
-                      <input type="text" />
+                      <input
+                        type="text"
+                        [(ngModel)]="newFieldsData.webReference"
+                      />
                     </div>
                   </div>
                 </div>
                 <div class="addbtn">
-                  <button class="btn">Add</button>
+                  <button
+                    class="btn"
+                    (click)="addNewData()"
+                    [disabled]="!isAllFieldsFilled()"
+                  >
+                    Add
+                  </button>
                 </div>
               </div>
             </div>
@@ -318,10 +335,17 @@
               class="btn footer_close_btn"
               data-bs-dismiss="modal"
               style="margin-right: 1.5rem"
+              (click)="close()"
             >
               Cancel
             </button>
-            <button type="button" class="btn btn-primary ml-2">Save</button>
+            <button
+              type="button"
+              class="btn footer_ok_btn ml-2"
+              (click)="close()"
+            >
+              OK
+            </button>
           </div>
         </div>
       </div>
