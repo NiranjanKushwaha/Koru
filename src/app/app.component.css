@@ -154,3 +154,32 @@ tbody td, thead th {
 td,th {
   text-align:center;
 }
+
+
+input[type='text']{
+  width: 18rem;
+}
+
+.common_btn_style{
+  width:3rem;
+  border-radius: 5px;
+  
+}
+
+.addbtn{
+  float: right;
+  background-color: #dcdde1;
+  border-radius: 0.3rem;
+}
+
+.addbtn:hover,.footer_close_btn:hover{
+  background-color: silver;
+}
+
+.footer_close_btn, .delete_btn{
+  background-color: #dcdde1;
+}
+.delete_btn:hover{
+  background-color: red;
+  color: #fff;
+}
